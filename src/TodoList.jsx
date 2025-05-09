@@ -13,15 +13,15 @@ const TodoList = () => {
       <div className="w-full max-w-sm mx-auto">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-xl font-bold text-gray-800">{getGreeting()}</h1>
-            <p className="text-sm text-gray-500">Start scheduling your daily task.</p>
+            <h1 className="text-2xl font-bold text-gray-800">{getGreeting()}</h1>
+            <p className="text-md text-gray-500">Start scheduling your daily task.</p>
           </div>
-          <button className="w-10 h-10 rounded-full bg-violet-800/50 text-white flex items-center justify-center">
+          <button className="w-12 h-12 rounded-full bg-violet-800/50 text-white flex items-center justify-center">
             <Plus />
           </button>
         </div>
 
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Today's tasks</h2>
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">Today's tasks</h2>
       </div>
     </div>
   );
