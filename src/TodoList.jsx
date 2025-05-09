@@ -1,5 +1,5 @@
-import { Plus, Trash, Trash2 } from "lucide-react";
-import { useState } from "react";
+import { Plus, Trash2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import AddModal from "./components/AddModal";
 
 const TodoList = () => {
@@ -11,7 +11,14 @@ const TodoList = () => {
   };
 
   // TASKS
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   function addTask(newTask) {
     setTasks((t) => [...t, newTask]);
@@ -25,7 +32,7 @@ const TodoList = () => {
     setTasks(updatedTasks);
   }
 
-  // COMPLETE A
+  // COMPLETE A TASK
   function handleCheck(index) {
     setTasks(
       tasks.map((task, i) => {
@@ -43,8 +50,8 @@ const TodoList = () => {
   return (
     <>
       <AddModal open={open} onClose={() => setOpen(false)} addTask={addTask} />
-      <div className="min-h-screen bg-gray-100 pt-8">
-        <div className="mx-auto w-full max-w-sm rounded-lg p-4 shadow-lg">
+      <div className="min-h-screen bg-gray-100 pt-2">
+        <div className="mx-auto w-full max-w-sm rounded-lg p-4">
           <div className="mb-6 flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-800">
@@ -71,13 +78,14 @@ const TodoList = () => {
                 return (
                   <li
                     key={index}
-                    className="my-2 flex items-center justify-between rounded-lg border border-gray-400 p-2"
+                    className="my-3 flex items-center justify-between rounded-2xl border-2 border-gray-400 p-2"
                   >
                     <div className="flex gap-4">
                       <input
                         type="checkbox"
                         checked={task.completed}
                         onChange={() => handleCheck(index)}
+                        className="accent-violet-500"
                       />
                       <div className="flex flex-col gap-2">
                         <p className="text-xs text-gray-600">{task.time}</p>
@@ -89,17 +97,17 @@ const TodoList = () => {
                       </div>
                     </div>
                     <div>
-                      <Trash
+                      <Trash2
                         size={16}
                         onClick={() => deleteTask(index)}
-                        className="cursor-pointer text-violet-800/50"
+                        className="cursor-pointer text-red-800/75"
                       />
                     </div>
                   </li>
                 );
               })
             ) : (
-              <li className="my-2 flex items-center justify-center rounded-lg border border-gray-400 p-2">
+              <li className="my-2 flex items-center justify-center rounded-xl border border-gray-400 p-2">
                 <p className="text-gray-400">You have no tasks listed.</p>
               </li>
             )}

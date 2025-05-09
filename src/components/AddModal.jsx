@@ -26,7 +26,7 @@ function AddModal({ open, onClose, addTask }) {
       <div className="h-fit w-full max-w-sm rounded-lg bg-gray-100 p-4">
         <form className="flex flex-col gap-4">
           <div className="flex justify-between">
-            <p className="font-bold">Add Task</p>
+            <p className="font-semibold text-gray-800">Add Task</p>
             <X onClick={onClose} className="cursor-pointer" />
           </div>
           <div className="flex flex-col">
@@ -35,7 +35,7 @@ function AddModal({ open, onClose, addTask }) {
               onChange={(e) => setTask({ ...task, task: e.target.value })}
               value={task.task}
               type="text"
-              className="rounded-xl border-2 border-gray-400/75 bg-transparent px-2 py-4 focus:border-orange-500 focus:outline-none"
+              className="rounded-2xl border-2 border-gray-400/75 bg-transparent px-2 py-4 focus:border-orange-500 focus:outline-none"
             />
           </div>
           <div className="flex flex-col">
@@ -44,7 +44,7 @@ function AddModal({ open, onClose, addTask }) {
               onChange={(e) => setTask({ ...task, time: e.target.value })}
               value={task.time}
               type="time"
-              className="rounded-xl border-2 border-gray-400/75 bg-transparent px-2 py-4 focus:border-orange-500 focus:outline-none"
+              className="rounded-2xl border-2 border-gray-400/75 bg-transparent px-2 py-4 focus:border-orange-500 focus:outline-none"
             />
           </div>
           <div>
