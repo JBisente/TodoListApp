@@ -25,6 +25,7 @@ const TodoList = () => {
     setTasks(updatedTasks);
   }
 
+  // COMPLETE A TASK
   function handleCheck(index) {
     setTasks(
       tasks.map((task, i) => {
