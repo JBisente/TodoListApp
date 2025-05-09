@@ -16,11 +16,12 @@ Whether for school, work, or personal use, our system can support users in becom
 └── TODOLISTAPP/
     ├── public
     ├── src/
+    │   ├── components/
+    │   │   └── AddModal.jsx
     │   ├── assets             
     │   ├── App.css
     │   ├── index.css
     │   ├── main.jsx
-    │   ├── Modal.jsx
     │   └── TodoList.jsx
     ├── .gitignore
     ├── .eslint.config.js
