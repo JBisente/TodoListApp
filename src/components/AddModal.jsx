@@ -1,16 +1,20 @@
 import { X } from "lucide-react";
 import { useState } from "react";
 
-function Modal({ open, onClose, addTask }) {
+function AddModal({ open, onClose, addTask }) {
   const [task, setTask] = useState({
     time: "",
     task: "",
+    completed: false,
   });
 
   function handleSubmit(e) {
     e.preventDefault();
+    // Add a new task in the list
     addTask(task);
-    setTask({ time: "", task: "" });
+
+    // Clears the task form
+    setTask({ id: ``, time: "", task: "", completed: false });
     onClose();
   }
 
@@ -29,7 +33,7 @@ function Modal({ open, onClose, addTask }) {
             <label>Title</label>
             <input
               onChange={(e) => setTask({ ...task, task: e.target.value })}
-              value={task.name}
+              value={task.task}
               type="text"
               className="rounded-xl border-2 border-gray-400/75 bg-transparent px-2 py-4 focus:border-orange-500 focus:outline-none"
             />
@@ -57,4 +61,4 @@ function Modal({ open, onClose, addTask }) {
   );
 }
 
-export default Modal;
+export default AddModal;

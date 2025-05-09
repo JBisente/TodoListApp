@@ -1,12 +1,40 @@
-# React + Vite
+# Synergy Todo List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="justify">
+Hi! This is our group activity for ITEC 106A. Our system is all about a To-Do List, which is designed to help users organize their daily tasks efficiently. We carefully planned and designed a clean, modern, and user-friendly interface to ensure the best experience for users. 
 
-Currently, two official plugins are available:
+In our system, each task includes a checkbox to mark completion, time to schedule the task, a short description of the activity, and icons for editing or deleting the task. These features allow users to manage their tasks easily and make quick changes whenever needed.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This to-do list system is very helpful in maintaining time management by allowing users to keep track of what needs to be done next. It encourages better planning and helps increase productivity throughout the day.
 
-## Expanding the ESLint configuration
+Whether for school, work, or personal use, our system can support users in becoming more organized and focused, ultimately helping them reach their goals more efficiently.
+</div>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Folder Structure
+
+```
+└── TODOLISTAPP/
+    ├── public
+    ├── src/
+    │   ├── components/
+    │   │   └── AddModal.jsx
+    │   ├── assets             
+    │   ├── App.css
+    │   ├── index.css
+    │   ├── main.jsx
+    │   └── TodoList.jsx
+    ├── .gitignore
+    ├── .eslint.config.js
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    ├── postcss.config.js
+    ├── README.md
+    ├── tailwind.config.js
+    └── vite.config.js
+```
+
+# Features
+- Add a new todo item by clicking the + button
+- Mark todo item as completed by clicking the checkbox
+- Delete aa todo item by clicking the trash button

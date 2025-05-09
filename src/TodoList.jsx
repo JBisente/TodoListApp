@@ -1,6 +1,6 @@
 import { Plus, Trash, Trash2 } from "lucide-react";
 import { useState } from "react";
-import Modal from "./Modal";
+import AddModal from "./components/AddModal";
 
 const TodoList = () => {
   const getGreeting = () => {
@@ -11,23 +11,40 @@ const TodoList = () => {
   };
 
   // TASKS
-  const [tasks, setTasks] = useState([
-    { time: "08:00", task: "Go to church" },
-    { time: "09:00", task: "Cook for Family" },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   function addTask(newTask) {
     setTasks((t) => [...t, newTask]);
   }
-  function deleteTask(index) {}
+
+  // DELETE A TASK
+  function deleteTask(index) {
+    const updatedTasks = tasks.filter(
+      (_, currentIndex) => currentIndex !== index,
+    );
+    setTasks(updatedTasks);
+  }
+
+  // COMPLETE A
+  function handleCheck(index) {
+    setTasks(
+      tasks.map((task, i) => {
+        if (i === index) {
+          return { ...task, completed: !task.completed };
+        } else {
+          return task;
+        }
+      }),
+    );
+  }
 
   // MODAL
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Modal open={open} onClose={() => setOpen(false)} addTask={addTask} />
-      <div className="min-h-screen bg-gray-100">
-        <div className="mx-auto w-full max-w-md rounded-lg p-4">
+      <AddModal open={open} onClose={() => setOpen(false)} addTask={addTask} />
+      <div className="min-h-screen bg-gray-100 pt-8">
+        <div className="mx-auto w-full max-w-sm rounded-lg p-4 shadow-lg">
           <div className="mb-6 flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-800">
@@ -49,46 +66,43 @@ const TodoList = () => {
             Today's tasks
           </h2>
           <ol>
-            {tasks.map((task, index) => {
-              return (
-                <li
-                  key={index}
-                  className="my-3 flex items-center justify-between rounded-2xl border-2 border-gray-400/75 p-2"
-                >
-                  <div className="flex gap-4">
-                    <input type="checkbox" className="accent-violet-500"/>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-xs text-gray-600">{task.time}</p>
-                      <p className="text-gray-800">{task.task}</p>
+            {tasks.length !== 0 ? (
+              tasks.map((task, index) => {
+                return (
+                  <li
+                    key={index}
+                    className="my-2 flex items-center justify-between rounded-lg border border-gray-400 p-2"
+                  >
+                    <div className="flex gap-4">
+                      <input
+                        type="checkbox"
+                        checked={task.completed}
+                        onChange={() => handleCheck(index)}
+                      />
+                      <div className="flex flex-col gap-2">
+                        <p className="text-xs text-gray-600">{task.time}</p>
+                        <p
+                          className={`${task.completed ? "line-through" : ""}`}
+                        >
+                          {task.task}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <Trash2 size={16} onClick={() => deleteTask(index)} className="text-red-500"/>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-          <h2 className="mb-4 text-xl font-semibold text-gray-800">
-            Completed Tasks
-          </h2>
-          <ol>
-            {tasks.map((task, index) => {
-              return (
-                <li className="my-2 flex items-center justify-between rounded-xl border-2 border-gray-400/75 p-2">
-                  <div className="flex gap-4">
-                    <input type="checkbox" />
-                    <div className="flex flex-col gap-2">
-                      <p className="text-xs text-gray-600">{task.time}</p>
-                      <p className="text-gray-800">{task.task}</p>
+                    <div>
+                      <Trash
+                        size={16}
+                        onClick={() => deleteTask(index)}
+                        className="cursor-pointer text-violet-800/50"
+                      />
                     </div>
-                  </div>
-                  <div>
-                    <Trash size={16} className="text-red-500"/>
-                  </div>
-                </li>
-              );
-            })}
+                  </li>
+                );
+              })
+            ) : (
+              <li className="my-2 flex items-center justify-center rounded-lg border border-gray-400 p-2">
+                <p className="text-gray-400">You have no tasks listed.</p>
+              </li>
+            )}
           </ol>
         </div>
       </div>
