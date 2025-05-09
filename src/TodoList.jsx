@@ -43,7 +43,7 @@ const TodoList = () => {
   return (
     <>
       <AddModal open={open} onClose={() => setOpen(false)} addTask={addTask} />
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-gray-100 pt-8">
         <div className="mx-auto w-full max-w-sm rounded-lg p-4 shadow-lg">
           <div className="mb-6 flex items-center justify-between">
             <div>
