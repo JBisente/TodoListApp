@@ -1,6 +1,6 @@
 {
-  "name": "TodoListApp",
-  "homepage": "https://JBisente.github.io/TodoListApp/",
+  "name": "todolistapp",
+  "homepage": "https://JBisente.github.io/todolistapp/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
