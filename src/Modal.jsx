@@ -5,12 +5,13 @@ function Modal({ open, onClose, addTask }) {
   const [task, setTask] = useState({
     time: "",
     task: "",
+    completed: false,
   });
 
   function handleSubmit(e) {
     e.preventDefault();
     addTask(task);
-    setTask({ time: "", task: "" });
+    setTask({ time: "", task: "", completed: false });
     onClose();
   }
 
@@ -29,7 +30,7 @@ function Modal({ open, onClose, addTask }) {
             <label>Name</label>
             <input
               onChange={(e) => setTask({ ...task, task: e.target.value })}
-              value={task.name}
+              value={task.task}
               type="text"
               className="rounded-lg border border-gray-400 bg-transparent px-2 py-4"
             />
