@@ -1,6 +1,6 @@
 import { Plus, Trash } from "lucide-react";
 import { useState } from "react";
-import Modal from "./Modal";
+import AddModal from "./components/AddModal";
 
 const TodoList = () => {
   const getGreeting = () => {
@@ -42,7 +42,7 @@ const TodoList = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Modal open={open} onClose={() => setOpen(false)} addTask={addTask} />
+      <AddModal open={open} onClose={() => setOpen(false)} addTask={addTask} />
       <div className="min-h-screen bg-gray-100">
         <div className="mx-auto w-full max-w-sm rounded-lg p-4 shadow-lg">
           <div className="mb-6 flex items-center justify-between">
@@ -66,31 +66,43 @@ const TodoList = () => {
             Today's tasks
           </h2>
           <ol>
-            {tasks.map((task, index) => {
-              return (
-                <li
-                  key={index}
-                  className="my-2 flex items-center justify-between rounded-lg border border-gray-400 p-2"
-                >
-                  <div className="flex gap-4">
-                    <input
-                      type="checkbox"
-                      checked={task.completed}
-                      onChange={() => handleCheck(index)}
-                    />
-                    <div className="flex flex-col gap-2">
-                      <p className="text-xs text-gray-600">{task.time}</p>
-                      <p className={`${task.completed ? "line-through" : ""}`}>
-                        {task.task}
-                      </p>
+            {tasks.length !== 0 ? (
+              tasks.map((task, index) => {
+                return (
+                  <li
+                    key={index}
+                    className="my-2 flex items-center justify-between rounded-lg border border-gray-400 p-2"
+                  >
+                    <div className="flex gap-4">
+                      <input
+                        type="checkbox"
+                        checked={task.completed}
+                        onChange={() => handleCheck(index)}
+                      />
+                      <div className="flex flex-col gap-2">
+                        <p className="text-xs text-gray-600">{task.time}</p>
+                        <p
+                          className={`${task.completed ? "line-through" : ""}`}
+                        >
+                          {task.task}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <Trash size={16} onClick={() => deleteTask(index)} />
-                  </div>
-                </li>
-              );
-            })}
+                    <div>
+                      <Trash
+                        size={16}
+                        onClick={() => deleteTask(index)}
+                        className="cursor-pointer text-violet-800/50"
+                      />
+                    </div>
+                  </li>
+                );
+              })
+            ) : (
+              <li className="my-2 flex items-center justify-center rounded-lg border border-gray-400 p-2">
+                <p className="text-gray-400">You have no tasks listed.</p>
+              </li>
+            )}
           </ol>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { useState } from "react";
 
-function Modal({ open, onClose, addTask }) {
+function AddModal({ open, onClose, addTask }) {
   const [task, setTask] = useState({
     time: "",
     task: "",
@@ -10,18 +10,12 @@ function Modal({ open, onClose, addTask }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    createId();
     // Add a new task in the list
     addTask(task);
 
     // Clears the task form
     setTask({ id: ``, time: "", task: "", completed: false });
     onClose();
-  }
-
-  function createId() {
-    const id = new Date().getDay;
-    console.log(id);
   }
 
   return (
@@ -42,6 +36,7 @@ function Modal({ open, onClose, addTask }) {
               value={task.task}
               type="text"
               className="rounded-lg border border-gray-400 bg-transparent px-2 py-4"
+              required
             />
           </div>
           <div className="flex flex-col">
@@ -51,6 +46,7 @@ function Modal({ open, onClose, addTask }) {
               value={task.time}
               type="time"
               className="rounded-lg border border-gray-400 bg-transparent px-2 py-4"
+              required
             />
           </div>
           <div>
@@ -67,4 +63,4 @@ function Modal({ open, onClose, addTask }) {
   );
 }
 
-export default Modal;
+export default AddModal;
