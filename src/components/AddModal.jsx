@@ -44,7 +44,7 @@ function AddModal({ open, onClose, addTask }) {
               onChange={(e) => setTask({ ...task, time: e.target.value })}
               value={task.time}
               type="time"
-              className="rounded-2xl border-2 border-gray-400/75 bg-transparent px-2 py-4 focus:border-orange-500 focus:outline-none"
+              className="w-full rounded-2xl border-2 border-gray-400/75 bg-transparent px-2 py-4 focus:border-orange-500 focus:outline-none"
             />
           </div>
           <div>
