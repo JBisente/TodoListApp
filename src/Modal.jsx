@@ -10,9 +10,18 @@ function Modal({ open, onClose, addTask }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    createId();
+    // Add a new task in the list
     addTask(task);
-    setTask({ time: "", task: "", completed: false });
+
+    // Clears the task form
+    setTask({ id: ``, time: "", task: "", completed: false });
     onClose();
+  }
+
+  function createId() {
+    const id = new Date().getDay;
+    console.log(id);
   }
 
   return (
