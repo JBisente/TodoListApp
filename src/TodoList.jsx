@@ -1,4 +1,4 @@
-import { Plus, Trash } from "lucide-react";
+import { Plus, Trash, Trash2 } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
 
@@ -27,7 +27,7 @@ const TodoList = () => {
     <>
       <Modal open={open} onClose={() => setOpen(false)} addTask={addTask} />
       <div className="min-h-screen bg-gray-100">
-        <div className="mx-auto w-full max-w-sm rounded-lg p-4 shadow-lg">
+        <div className="mx-auto w-full max-w-md rounded-lg p-4">
           <div className="mb-6 flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-800">
@@ -53,17 +53,17 @@ const TodoList = () => {
               return (
                 <li
                   key={index}
-                  className="my-2 flex items-center justify-between rounded-lg border border-gray-400 p-2"
+                  className="my-3 flex items-center justify-between rounded-2xl border-2 border-gray-400/75 p-2"
                 >
                   <div className="flex gap-4">
-                    <input type="checkbox" />
+                    <input type="checkbox" className="accent-violet-500"/>
                     <div className="flex flex-col gap-2">
                       <p className="text-xs text-gray-600">{task.time}</p>
-                      <p>{task.task}</p>
+                      <p className="text-gray-800">{task.task}</p>
                     </div>
                   </div>
                   <div>
-                    <Trash size={16} onClick={() => deleteTask(index)} />
+                    <Trash2 size={16} onClick={() => deleteTask(index)} className="text-red-500"/>
                   </div>
                 </li>
               );
@@ -75,16 +75,16 @@ const TodoList = () => {
           <ol>
             {tasks.map((task, index) => {
               return (
-                <li className="my-2 flex items-center justify-between rounded-lg border border-gray-400 p-2">
+                <li className="my-2 flex items-center justify-between rounded-xl border-2 border-gray-400/75 p-2">
                   <div className="flex gap-4">
                     <input type="checkbox" />
                     <div className="flex flex-col gap-2">
                       <p className="text-xs text-gray-600">{task.time}</p>
-                      <p>{task.task}</p>
+                      <p className="text-gray-800">{task.task}</p>
                     </div>
                   </div>
                   <div>
-                    <Trash size={16} />
+                    <Trash size={16} className="text-red-500"/>
                   </div>
                 </li>
               );

@@ -17,7 +17,7 @@ function Modal({ open, onClose, addTask }) {
   return (
     // MODAL
     <div
-      className={`fixed flex h-full w-full items-center justify-center bg-gray-500/30 ${open ? "visible" : "invisible"}`}
+      className={`fixed flex h-full w-full items-center justify-center bg-gray-500/30 p-4 ${open ? "visible" : "invisible"}`}
     >
       <div className="h-fit w-full max-w-sm rounded-lg bg-gray-100 p-4">
         <form className="flex flex-col gap-4">
@@ -26,12 +26,12 @@ function Modal({ open, onClose, addTask }) {
             <X onClick={onClose} className="cursor-pointer" />
           </div>
           <div className="flex flex-col">
-            <label>Name</label>
+            <label>Title</label>
             <input
               onChange={(e) => setTask({ ...task, task: e.target.value })}
               value={task.name}
               type="text"
-              className="rounded-lg border border-gray-400 bg-transparent px-2 py-4"
+              className="rounded-xl border-2 border-gray-400/75 bg-transparent px-2 py-4 focus:border-orange-500 focus:outline-none"
             />
           </div>
           <div className="flex flex-col">
@@ -40,7 +40,7 @@ function Modal({ open, onClose, addTask }) {
               onChange={(e) => setTask({ ...task, time: e.target.value })}
               value={task.time}
               type="time"
-              className="rounded-lg border border-gray-400 bg-transparent px-2 py-4"
+              className="rounded-xl border-2 border-gray-400/75 bg-transparent px-2 py-4 focus:border-orange-500 focus:outline-none"
             />
           </div>
           <div>
